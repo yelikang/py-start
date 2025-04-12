@@ -11,7 +11,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     # 返回字符串作为响应内容
-    return "Hello, World22!"
+    return "Hello, World wtf!"
 
 
 # 判断是否是直接运行该脚本
