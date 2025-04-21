@@ -12,7 +12,7 @@ app = create_app()
 @app.route("/")
 def index():
     # 返回字符串作为响应内容
-    return "Hello, World22!"
+    return "Hello, World wtf!"
 
 
 # 判断是否是直接运行该脚本; 只有当前程序自身运行，__name__的值是'__main__'
