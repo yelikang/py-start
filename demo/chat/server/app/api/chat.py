@@ -15,11 +15,10 @@ def list():
 @chat_bp.route("/ask", methods=["POST"])
 def ask():
     data = request.json
-    print(data)
     from app.ai.aigc.llm import generate
 
     def generate_stream():
-        for chunk in generate(data.get("query")):
+        for chunk in generate(data.get("query"), data.get("history", [])):
             yield f"data: {json.dumps({'type': 'stream', 'content': chunk}, ensure_ascii=False)}\n\n"
             # time.sleep(1)
         yield f"data: {json.dumps({'type': 'end'}, ensure_ascii=False)}\n\n"

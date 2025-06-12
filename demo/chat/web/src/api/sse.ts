@@ -1,15 +1,11 @@
-import Axios from 'axios'
-
-const request = Axios.create({
-    baseURL: '/api',
-    timeout: 2 * 60 * 1000,
-    withCredentials: true
-})
+import http from './http'
+import { cache } from '@/utils/cache'
 
 export default {
     sendSSE: (params: any, progress: (content: any) => void) => {
         let lastprogressIndex = 0
-        return Axios.post('/api/chat/ask', params, {
+
+        return http.post('/chat/ask', params, {
             responseType: 'stream',
             onDownloadProgress: async (progressEvent: any) => {
                 // axios 

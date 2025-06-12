@@ -7,15 +7,13 @@ base_url = os.getenv("base_url")
 print("api_key", api_key)
 
 
-def generate(query):
+def generate(query, history):
     client = OpenAI(api_key=api_key, base_url=base_url)
-
+    history.append({"role": "user", "content": query})
     try:
         completion = client.chat.completions.create(
             model="moonshot-v1-8k",
-            messages=[
-                {"role": "user", "content": query},
-            ],
+            messages= history,
             stream=True,
         )
         # 流式返回
