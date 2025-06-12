@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-html="content"></div>
+    <div v-html="markdownContent"></div>
 
     <ChatInput @sendMessage="sendMessage" />
   </div>
@@ -9,11 +9,13 @@
 
 
 <script setup lang="ts">
-import { chatRes } from "@/api";
+import { chatRes, sseRes } from "@/api";
 import { ref } from "vue";
 import ChatInput from "@/components/chat-input.vue";
+import markdownToHtml from "@/utils/markdown-to-html";
 
 let content = ref("");
+let markdownContent = ref("");
 
 const getChatList = () => {
   chatRes.getChatList({ chatId: "666" }).then((res: any) => {
@@ -22,9 +24,21 @@ const getChatList = () => {
 };
 
 const sendMessage = (_query: string) => {
-  chatRes.ask({ query: _query }).then((res: any) => {
-    content.value = res?.data?.content;
-  });
+  content.value = "";
+  markdownContent.value = "";
+  sseRes
+    .sendSSE({ query: _query }, (msg: any) => {
+      content.value += msg;
+      // markdownContent.value = content.value;
+      console.log(content.value);
+
+      markdownToHtml(content.value).then((html: any) => {
+        markdownContent.value = html;
+      });
+    })
+    .then(() => {
+      console.log("结束");
+    });
 };
 </script>
 

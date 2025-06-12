@@ -24,7 +24,7 @@ def generate(query):
             if chunk.choices[0].delta.content is not None:
                 content = chunk.choices[0].delta.content
                 # full_content += content
-                print('content', content)
+                # print('content', content)
                 yield content
 
         # answer = completion.choices[0].message

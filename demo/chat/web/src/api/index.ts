@@ -1,2 +1,3 @@
 import chatRes from './chat'
-export { chatRes }
+import sseRes from './sse'
+export { chatRes, sseRes }

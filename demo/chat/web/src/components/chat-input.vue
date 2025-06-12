@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { ref, defineEmits } from "vue";
 
-const message = ref<string>("");
+const message = ref<string>("帮我写一个200字小说");
 const emit = defineEmits(["sendMessage"]);
 const sendMessage = () => {
   emit("sendMessage", message.value);
