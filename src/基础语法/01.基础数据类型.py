@@ -53,3 +53,4 @@ user = {
     name:'coder',
     age: 12
 }
+print(user)
