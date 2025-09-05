@@ -1,0 +1,18 @@
+Databases:
+ - name: mysql
+   host: 127.0.0.1
+   port: 3306
+   user: root
+   password: 123456
+   database: test
+ - name: postgresql
+   host: 127.0.0.1
+   port: 5432
+   user: postgres
+   password: 123456
+   database: test
+Envirments:
+ - name: dev
+   api: http://localhost:8080
+ - name: prod
+   api: http://www.baidu.com

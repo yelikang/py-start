@@ -26,9 +26,15 @@ class Child(Parent):
     def __private_method(self, key):
         print("This is a private method.", self.name, key)
 
+    # 静态方法
+    @staticmethod
+    def staticShow():
+        print('我是静态方法')
+
 child = Child("Alice", 10, "girl")
 child.say_hello()
 
+Child.staticShow()
 
 # 外部不能调用私有方法
 # child.__private_method('key')

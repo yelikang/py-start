@@ -4,6 +4,7 @@ class User:
     Worker = "工人"
     # 构造函数
     def __init__(self, name, age):
+        # 实例属性
         self.name = name
         self.age = age
 
