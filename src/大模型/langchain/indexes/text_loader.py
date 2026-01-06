@@ -4,6 +4,8 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 
+# 文档切割
+
 def split_text():
     current_path = os.path.dirname(os.path.abspath(__file__))
     filepath = os.path.join(current_path, 'demo.txt')
@@ -13,8 +15,9 @@ def split_text():
 
     # 文档切分
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size = 100,
-        chunk_overlap=20
+        chunk_size = 10,
+        chunk_overlap=2,
+        separators=["\n\n", "\n", "。", "！", "？", " ", ""]
     )
     docs = text_splitter.split_documents(documents)
     print(docs)

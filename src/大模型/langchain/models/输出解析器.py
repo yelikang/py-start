@@ -15,7 +15,7 @@ llm = ChatOpenAI(
 
 # 构建输出解析器
 # output_parser = StrOutputParser()
-# 使用json解析器，需告诉模型输出的是json格式；并且没有content属性
+# 使用json解析器，需告诉模型输出的是json格式；并且使用answer属性
 output_parser = JsonOutputParser()
 
 chain = prompt | llm | output_parser

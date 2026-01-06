@@ -11,6 +11,8 @@ llm = ChatOpenAI(
     api_key="dummy-key",
     model_name="DeepSeek-V3-Fast"  # 需要替换为实际可用的模型名
 )
+# 查看ChatPromoptTemplate实际转换成的内容
+# print(prompt.format(input="张飞"))
 
 chain = prompt | llm
 
