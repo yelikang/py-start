@@ -14,10 +14,10 @@ def chat_with_ChatOpenAI():
     ])
     # 模板连接到模型
     chain = template | llm
-
+    # 同步调用
     result = chain.invoke({'txt': '小明'})
     print(result.content)
-    # 异步
+    # 异步/流式输出
     # import asyncio
     # async def generate_joke():
     #     async for token in chain.astream({'txt': '小明'}):
